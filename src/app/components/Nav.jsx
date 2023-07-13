@@ -18,30 +18,28 @@ const Nav = () => {
           </a>
 
           <div
-            // className={`flex md:flex-row flex-col gap-8 md:gap-2 md:dark:bg-transparent md:bg-transparent bg-orange-300 dark:bg-slate-700  fixed left-[20px] p-6 top-[80px] md:right-0 md:top-0 md:w-48 w-72 top z-10  ${
-            // mobileNav ? "" : " translate-x-[800px]"
-            // } transition duration-300  ease-out`}
-            className={`md:flex flex-row items-center md:static absolute md:bg-transparent bg-orange-300 
+            className={`md:flex flex-row items-center md:static fixed md:bg-transparent  dark:md:bg-transparent dark:bg-slate-700 bg-orange-300 
      justify-center
-            top-[74px]
-            md:translate-x-[0px]
-    m-3  p-[10vh]  pb-60
-           ${
-             mobileNav ? "" : " translate-x-[800px]"
-           } transition duration-300  ease-out
-            p-auto
 
-               md:m-0 md:p-0 
-            `}
+            md:translate-x-[0px]
+   m-3  p-[10vh]   pb-60
+           ${
+             mobileNav
+               ? "h-[100vh] w-[100vw] top-0 left-0 "
+               : "  translate-x-[800px]"
+           } transition duration-300  ease-out p-auto md:m-0 md:p-0 `}
           >
             {items.map((item, index) => (
               <div
                 key={index}
-                className="text-black dark:text-white m-6  md:m-0"
+                className={`text-black dark:text-white m-6  md:m-0
+                
+                ${mobileNav ? " m-20" : ""}
+                `}
               >
                 {item !== "Resume" ? (
                   <a
-                    className=" m-2 p-2 dark:border-l-blue-500  dark:border-white border-l-black border-red-600 border-2 rounded-md"
+                    className="  m-2 p-2 dark:border-l-blue-500  dark:border-white border-l-black border-red-600 border-2 rounded-md"
                     key={index}
                     href={`#${item}`}
                     onClick={() => setMobileNav(false)}
@@ -108,15 +106,20 @@ const Nav = () => {
           </button>
         </div>
       </nav>
-      <div className=" bg-white text-black fixed  bottom-0 ml-[20px] lg:ml-[35px] opacity-0  md:opacity-100">
+      <div className="  text-black fixed  bottom-0 ml-[20px] lg:ml-[35px] opacity-0  md:opacity-100 bg-transparent">
         <div className="hover:pb-[8px] h-[40px]  items-center mb-[5px]  flex  transition-all duration-300">
           <a
+            className="h-[25px] w-[25px]"
             rel="noopener noreferrer"
             target="_blank"
             href="https://www.linkedin.com/in/sanyam542/"
             title="Linkedin"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg
+              className=" dark:fill-white fill-black"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
               <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
             </svg>
           </a>
@@ -131,6 +134,7 @@ const Nav = () => {
             title="Github"
           >
             <svg
+              className=" dark:fill-white fill-black"
               xmlns="http://www.w3.org/2000/svg"
               strokeLinecap="round"
               strokeinejoin="round"
@@ -140,6 +144,14 @@ const Nav = () => {
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
             </svg>
           </a>
+        </div>
+        <div className="fixed dark:text-white bottom-0 right-0 w-[50px] mr-[0px] lg:mr-[25px] opacity-0 md:opacity-100 ">
+          <div className="rotate-90  mb-[100px] mx-auto text-[14px] hover:transition-all duration-500  hover:mb-[125px] tracking-widest ml-[0px]">
+            <a href="mailto:sanyamsingh5421@gmail.com">
+              sanyamsingh5421@gmail.com{" "}
+            </a>
+          </div>
+          <div className="h-[120px] w-[2.4px] bg-lightestSlate mx-auto mt-[10px] "></div>
         </div>
       </div>
     </>

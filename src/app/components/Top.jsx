@@ -2,13 +2,20 @@
 
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Top = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   useEffect(() => {
     setMounted(true);
+    console.log(theme);
+    if (theme === "dark") {
+      setDark(true);
+    } else {
+      setDark(false);
+    }
   }, []);
 
   if (!mounted) {
@@ -19,33 +26,62 @@ const Top = () => {
     <>
       <section
         id="Home"
-        className=" xl:m-72 max-w-[85%] m-auto xl:mb-[420px] mb-[150px] xl:mt-0"
+        className=" xl:m-72 max-w-[85%] m-auto xl:mb-[420px] mb-[150px] xl:mt-0 pt-[200px] md:pt-[270px]"
       >
-        {dark ? (
-          <div className="">
-            <img
+        <AnimatePresence>
+          {dark && (
+            <motion.img
+              initial={{ opacity: 0, x: -1000, y: 200 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: { duration: 1.2 },
+              }}
+              exit={{
+                opacity: 0,
+                x: 1000,
+                y: 100,
+                transition: { duration: 0.8 },
+              }}
               onClick={() => {
                 setDark(false);
                 setTheme("light");
               }}
-              className=" cursor-pointer xl:h-64 xl:w-64 w-48 h-48 animate-pulse "
+              className=" cursor-pointer xl:h-64 xl:w-64 w-48 h-48 animate-pulse absolute top-[74px] "
               src="https://i.imgur.com/IKUxBDj.png"
               alt="moon"
-            />
-          </div>
-        ) : (
-          <div>
-            <img
-              className=" xl:h-64 xl:w-64 w-48 h-48 animate-pulse "
-              src="https://i.imgur.com/HUN3qyv.png"
-              alt="sun"
+            ></motion.img>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {dark == false && (
+            <motion.img
+              initial={{ opacity: 0, x: -1000, y: 200 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: { duration: 1.2 },
+              }}
+              exit={{
+                opacity: 0,
+                x: 1000,
+                y: 100,
+
+                transition: { duration: 0.8 },
+              }}
               onClick={() => {
                 setDark(true);
                 setTheme("dark");
               }}
-            />
-          </div>
-        )}
+              className=" cursor-pointer xl:h-64 xl:w-64 w-48 h-48 animate-pulse absolute top-[74px]  "
+              src="https://i.imgur.com/HUN3qyv.png"
+              alt="sun"
+            ></motion.img>
+          )}
+        </AnimatePresence>
+
         <h5 className=" text-lg text-black dark:text-white">Hi, my name is</h5>
         <h1 className="xl:text-7xl  dark:text-white text-4xl text-black sm:text-red-600 ">
           Sanyam Singh

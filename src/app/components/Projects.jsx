@@ -1,8 +1,7 @@
+"use client";
 import React from "react";
 
-import GetSocial from "./projects/GetSocial";
-import ImageGallery from "./projects/ImageGallery";
-import BlogPage from "./projects/BlogPage";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -51,9 +50,15 @@ const Projects = () => {
         <h3 className="text-4xl mb-6">Some Things I've built</h3>
         <div></div>
       </div>
-      {projects.map((item) => {
+      {projects.map((item, index) => {
         return (
-          <div className="container flex  flex-col-reverse mb-40  border-2 dark:border-blue-400  border-red-600 rounded-xl p-2 ">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -300 : 300 }}
+            whileInView={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
+            viewport={{ once: false, amount: 0.1 }}
+            className="container flex  flex-col-reverse mb-40  border-2 dark:border-blue-400  border-red-600 rounded-xl p-2 "
+          >
             <div className="img ">
               <img src={item.image} alt="project_snapshot" />
             </div>
@@ -106,7 +111,7 @@ const Projects = () => {
               </div>
               <div className="links"></div>
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </section>

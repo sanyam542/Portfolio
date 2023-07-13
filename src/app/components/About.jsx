@@ -1,20 +1,25 @@
+"use client";
 import React from "react";
 
 const items = [
+  "Next.js",
+  "Typescript",
   "MongoDb",
   "Express",
   "React",
   "Node",
-  "Next.js",
-  "Typescript",
   "Tailwind",
   "Material UI",
   "React Native",
 ];
+import { motion } from "framer-motion";
 const About = () => {
   return (
-    <section
-      className=" max-w-[85%] m-auto xl:mb-[520px] pt-[100px] mb-[250px]  text-black dark:text-white "
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, y: 0, transition: { duration: 2 } }}
+      viewport={{ once: false, amount: 0.3 }}
+      className=" max-w-[85%] m-auto xl:mb-[420px] pt-[100px] mb-[150px]  text-black dark:text-white "
       id="About"
     >
       <h3 className=" text-4xl">About Me</h3>
@@ -57,7 +62,7 @@ const About = () => {
           />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -13,12 +13,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden  ">
-      <link
-        rel="shortcut icon"
-        href="https://i.imgur.com/LFh8Kdi.png"
-        type="image/x-icon"
-      />
+    <html lang="en" className="scroll-smooth  overflow-x-hidden ">
+      <link rel="icon" href="https://i.imgur.com/LFh8Kdi.png" />
       <body className={inter.className}>
         <Providers>
           <Nav />
